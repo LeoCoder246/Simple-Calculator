@@ -5,10 +5,10 @@
   <style>
     body{
       background-color: rgb(13, 13, 13);
-      text-align: end;
+    
     }
     button{
-      width: 50px;
+      width: 100px;
       height: 50px;
       margin-right: 5px;
       border: none;
@@ -22,7 +22,7 @@
       background-color: transparent;
       border-width: 2px;
       border-color: rgb(250, 186, 60);
-      width: 210px;
+      width: 410px;
       height: 40px;
       border-style: solid;
       color: white;
@@ -41,11 +41,25 @@
       color: rgb(59, 59, 59);
       font-weight: 600;
     }
+    .calInfo{
+      font-size: 20px;
+      color: rgb(250, 186, 60);
+      
+    }
   </style>
 </head>
 <body>
- 
-  <div style="margin-left: 50px;padding-top: 30px;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 300px;">
+      <p style="font-size: 30px; color:whitesmoke; font-weight: bold; text-align: start;">Calculator</p>
+      <div style="text-align: start; margin-left: 20px;">
+        <p class="calInfo"> (+) - Addition </p>
+        <p class="calInfo"> (-) - Subtraction </p>
+        <p class="calInfo"> (*) - Multiplication </p>
+        <p class="calInfo"> (/) - Division </p>
+      </div> 
+    </div>
+  <div style="margin-left: 50px;padding-top: 30px; display: inline-block;">
   <input class="calculatedResult" type="text" id="display" disabled /> 
   <!--
   This is where the current calculation or result is displayed.
@@ -149,6 +163,9 @@
     -->
   </p>
   </div>
+
+  
+  
   <script>
 
     
