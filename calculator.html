@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body{
+      background-color: rgb(13, 13, 13);
+    
+    }
+    button{
+      width: 100px;
+      height: 50px;
+      margin-right: 5px;
+      border: none;
+      border-radius: 25px;
+      font-size: 19px;
+      font-weight: 500;
+      background-color: rgb(59, 59, 59);
+      color: white;
+    }
+    .calculatedResult{
+      background-color: transparent;
+      border-width: 2px;
+      border-color: rgb(250, 186, 60);
+      width: 410px;
+      height: 40px;
+      border-style: solid;
+      color: white;
+      font-size: 24px;
+      padding-left: 9px;
+      border-radius: 20px;
+    }
+    .signBtn{
+      background-color: rgb(250, 186, 60);  /* Ensure the background color is applied */
+  color: white; /* White text color for the buttons */
+  font-weight: bold; /* Make the font bold for better visibility */
+  border-radius: 25px; 
+    }
+    .clearBtn{
+      background-color: white;
+      color: rgb(59, 59, 59);
+      font-weight: 600;
+    }
+    .calInfo{
+      font-size: 20px;
+      color: rgb(250, 186, 60);
+      
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <div style="width: 300px;">
+      <p style="font-size: 30px; color:whitesmoke; font-weight: bold; text-align: start;">Calculator</p>
+      <div style="text-align: start; margin-left: 20px;">
+        <p class="calInfo"> (+) - Addition </p>
+        <p class="calInfo"> (-) - Subtraction </p>
+        <p class="calInfo"> (*) - Multiplication </p>
+        <p class="calInfo"> (/) - Division </p>
+      </div> 
+    </div>
+  <div style="margin-left: 50px;padding-top: 30px; display: inline-block;">
+  <input class="calculatedResult" type="text" id="display" disabled /> 
+  <!--
+  This is where the current calculation or result is displayed.
+  disabled means the user can't type anything directly into it.
+  -->
+  <p>
+    <button onclick="
+    updateCalulation('1');
+    ">1</button>
+
+    <button onclick="
+    updateCalulation('2');
+    ">2</button>
+
+    <button onclick="
+    updateCalulation('3');
+    ">3</button>
+
+    <button class="signBtn" onclick="
+    updateCalulation('+');
+    ">+</button>
+  </p>
+
+  <p>
+    <button onclick="
+    updateCalulation('4');
+    ">4</button>
+
+    <button onclick="
+    updateCalulation('5');
+    ">5</button>
+
+    <button onclick="
+    updateCalulation('6');
+    ">6</button>
+
+    <button class="signBtn" onclick="
+    updateCalulation('-');
+    ">-</button>
+  </p>
+
+  <p>
+    <button onclick="
+    updateCalulation('7');
+    ">7</button>
+
+    <button onclick="
+    updateCalulation('8');
+    ">8</button>
+
+    <button onclick="
+    updateCalulation('9');
+    ">9</button>
+
+    <button class="signBtn" onclick="
+    updateCalulation('*');
+    ">*</button>
+  </p>
+
+  <p>
+    <button onclick="
+    updateCalulation('0');
+    ">0</button>
+
+    <button class="signBtn" onclick="
+    updateCalulation('.');
+    ">.</button>
+
+    <button class="signBtn" onclick="
+      // Note: eval() takes a string and runs it as code.
+      // Avoid using eval() in real world projects since
+      // it can potentially be given harmful code to run.
+      // Only use eval() for learning purposes.
+      calculation = eval(calculation);
+      document.getElementById('display').value = calculation;
+      localStorage.setItem('calculation',JSON.stringify(calculation));
+      console.log(calculation);
+    ">=</button>
+    <!--
+    When you press this button, the calculation string (like 1+2) is evaluated using eval() to get the result (3).
+    The result is displayed in the input box.
+    The result is also saved in the browser's localStorage so it can be restored later.
+    -->
+
+    <button class="signBtn" onclick="
+    updateCalulation('');
+    ">/</button>
+  </p>
+
+  <p>
+    <button class="clearBtn" onclick="
+      calculation = 0;
+      
+      document.getElementById('display').value = calculation;
+      localStorage.setItem('calculation',JSON.stringify(calculation));
+      console.log(calculation);
+    " style="width: 150px;margin-left: 5px;">Clear</button>
+    <!--
+    This button clears the current calculation.
+    It resets both the display and the value saved in localStorage.
+    -->
+  </p>
+  </div>
+
+  
+  
+  <script>
+
+    
+    let calculation = localStorage.getItem('calculation') ||'';
+    document.getElementById('display').value = calculation;
+    /*
+    This retrieves the last calculation stored in localStorage.
+    If there’s no saved calculation, it starts with an empty string ('').
+    It also updates the display to show the saved calculation when the page loads.
+    */
+
+function updateCalulation(calcuatorKey){
+  
+  calculation += calcuatorKey;
+  document.getElementById('display').value = calculation;
+  localStorage.setItem('calculation',JSON.stringify(calculation));
+  
+  console.log(calculation);
+
+
+  
+}
+
+
+
+
+
+</script>
+</body>
+
+</html>
+
+
+
